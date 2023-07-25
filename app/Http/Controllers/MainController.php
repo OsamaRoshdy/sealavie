@@ -34,7 +34,7 @@ class MainController extends Controller
 
     public function startPost()
     {
-        $this->pusher->push(['from' => '0.00', 'to' => '1.15']);
+        $this->pusher->push(['from' => '0', 'to' => '75']);
         return redirect()->route('welcome');
     }
 
@@ -58,7 +58,7 @@ class MainController extends Controller
     public function secondQuestionPost(Request $request)
     {
         if ($request->room == 1) {
-            $this->pusher->push(['from' => '1.15', 'to' => '3.37']);
+            $this->pusher->push(['from' => '75', 'to' => '188']);
             return redirect()->route('secondQuestion');
         }
         return redirect()->route('404');
