@@ -26,4 +26,5 @@ Route::controller(\App\Http\Controllers\MainController::class)->group(function (
     Route::post('/firstQuestionPost', 'firstQuestionPost')->name('firstQuestionPost');
     Route::get('/secondQuestion', 'secondQuestion')->name('secondQuestion');
     Route::post('/secondQuestionPost', 'secondQuestionPost')->name('secondQuestionPost');
+    Route::get('/404', 'notFound')->name('404');
 });

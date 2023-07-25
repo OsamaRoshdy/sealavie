@@ -34,7 +34,7 @@ class MainController extends Controller
 
     public function startPost()
     {
-        $this->pusher->push(['from' => '0.00', 'to' => '0.30']);
+        $this->pusher->push(['from' => '0.00', 'to' => '1.15']);
         return redirect()->route('welcome');
     }
 
@@ -46,20 +46,9 @@ class MainController extends Controller
 
     public function welcomePost(Request $request)
     {
-        $this->pusher->push(['from' => '0.30', 'to' => '1.00']);
-        return redirect()->route('firstQuestion');
-    }
-
-    public function firstQuestion()
-    {
-        return view('questions.one');
-    }
-
-    public function firstQuestionPost(Request $request)
-    {
-        $this->pusher->push(['from' => '1.00', 'to' => '1.30']);
         return redirect()->route('secondQuestion');
     }
+
 
     public function secondQuestion()
     {
@@ -68,10 +57,17 @@ class MainController extends Controller
 
     public function secondQuestionPost(Request $request)
     {
-        $this->pusher->push(['from' => '1.30', 'to' => '2.00']);
-        return redirect()->route('secondQuestion');
+        if ($request->room == 1) {
+            $this->pusher->push(['from' => '1.15', 'to' => '3.37']);
+            return redirect()->route('secondQuestion');
+        }
+        return redirect()->route('404');
     }
 
 
+    public function notFound()
+    {
+        return view('404');
+    }
 
 }
